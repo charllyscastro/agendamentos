@@ -8,6 +8,6 @@ class HomeController extends BaseController
 {
     public function index()
     {
-        echo 'SuperAdmin';
+        return view('Back/home/index');
     }
 }
