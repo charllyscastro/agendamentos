@@ -24,6 +24,11 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?php echo $title ?? 'Home'; ?></h1>
 
+    <?php foreach($units as $unit): ?>
+
+        <?php echo $unit->name;  ?>
+    <?php endforeach; ?>
+
 </div>
 <!-- /.container-fluid -->
 
