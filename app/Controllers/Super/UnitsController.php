@@ -23,8 +23,32 @@ class UnitsController extends BaseController
     {
         $data = [
             'title' => 'Unidades',
-            'units' => $this->unitModel->findAll(),
         ];
+        
+        $units = $this->unitModel->findAll();
+
+        $table = new \CodeIgniter\View\Table();
+
+        $template = [
+            'table_open' => '<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">',
+        ];
+
+        $table->setTemplate($template);
+
+        $table->setHeading('Nome', 'E-mail', 'Telefone', 'Início', 'Fim', 'Criado');
+
+        foreach($units as $unit){
+            $table->addRow([
+                $unit->name,
+                $unit->email,
+                $unit->phone,
+                $unit->starttime,
+                $unit->endtime,
+                $unit->created_at,
+            ]);
+        }
+
+        $data['units'] = $table->generate();
 
         return view('Back/Units/index', $data);
     }
